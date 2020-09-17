@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {View, Text, StatusBar, FlatList, ActivityIndicator} from "react-native";
-import {Appbar} from "react-native-paper";
+import {View, Text, StatusBar, FlatList, ActivityIndicator, Alert} from "react-native";
+import {Appbar, Snackbar} from "react-native-paper";
 
 export default class App extends Component{
 
@@ -22,6 +22,10 @@ export default class App extends Component{
     }catch(error){
       console.log(error);
     }
+  }
+
+  onItemClick(item){
+    Alert.alert(item.name)
   }
 
   render(){
@@ -59,7 +63,7 @@ export default class App extends Component{
           animating={true}/> : (
             <FlatList
               data={data}
-              renderItem = { ({item}) => <Text style={style.item}>{item.name}</Text> }
+              renderItem = { ({item}) => <Text style={style.item} onPress={() => {this.onItemClick(item)}}>{item.name}</Text> }
             />
           )
         }
