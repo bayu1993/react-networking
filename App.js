@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {View, Text, StatusBar, FlatList, ActivityIndicator} from "react-native";
+import {Appbar} from "react-native-paper";
 
 export default class App extends Component{
 
@@ -41,11 +42,17 @@ export default class App extends Component{
       indicator:{
         height:80,
         flex:1
+      },
+      appbar:{
+        backgroundColor:"#000000"
       }
     }
     return (
       <View style={style.container}>
         <StatusBar backgroundColor="#000000"/>
+        <Appbar.Header style={style.appbar}>
+          <Appbar.Content title="Github Repos"/>
+        </Appbar.Header>
         {
           isLoading ? <ActivityIndicator 
           color="#000000" size="large" style={style.indicator}
