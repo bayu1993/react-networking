@@ -15,7 +15,9 @@ export default class App extends Component{
     try{
       const response = await fetch("https://api.github.com/users/bayu1993/repos");
       const result = await response.json();
-      this.setState({data:result, isLoading:false});
+      setTimeout(() => {
+        this.setState({data:result, isLoading:false});        
+      }, 2000);
     }catch(error){
       console.log(error);
     }
@@ -36,12 +38,18 @@ export default class App extends Component{
         elevation:4,
         borderRadius:10
       },
+      indicator:{
+        height:80,
+        flex:1
+      }
     }
     return (
       <View style={style.container}>
         <StatusBar backgroundColor="#000000"/>
         {
-          isLoading ? <ActivityIndicator/> : (
+          isLoading ? <ActivityIndicator 
+          color="#000000" size="large" style={style.indicator}
+          animating={true}/> : (
             <FlatList
               data={data}
               renderItem = { ({item}) => <Text style={style.item}>{item.name}</Text> }
