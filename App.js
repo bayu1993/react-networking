@@ -2,13 +2,21 @@ import React, { Component } from "react";
 import {View, Text, StatusBar, FlatList} from "react-native";
 
 export default class App extends Component{
+
+  constructor(props){
+    super(props)
+    this.state = {
+      data:[],
+      isLoading:true
+    }
+  }
   render(){
     const style = {
       container:{
         flex:1
       },
       item:{
-        
+
       },
     }
     return (
