@@ -10,6 +10,17 @@ export default class App extends Component{
       isLoading:true
     }
   }
+
+  async componentDidMount(){
+    try{
+      const response = await fetch("https://api.github.com/users/bayu1993/repos");
+      const result = await response.json();
+      this.state({data:result, isLoading:false});
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   render(){
     const style = {
       container:{
