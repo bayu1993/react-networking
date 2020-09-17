@@ -28,7 +28,13 @@ export default class App extends Component{
         flex:1
       },
       item:{
-
+        margin:10, 
+        fontSize:16,
+        padding:20, 
+        color:"#eeeeee", 
+        backgroundColor:"#000000", 
+        elevation:4,
+        borderRadius:10
       },
     }
     return (
@@ -38,7 +44,7 @@ export default class App extends Component{
           isLoading ? <ActivityIndicator/> : (
             <FlatList
               data={data}
-              renderItem = { ({item}) => <Text>{item.name}</Text> }
+              renderItem = { ({item}) => <Text style={style.item}>{item.name}</Text> }
             />
           )
         }
